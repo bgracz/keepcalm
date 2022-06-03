@@ -33,7 +33,8 @@ let database =
 let i = 0;
 let playing = false;
 let audio = new Audio(database[i].location);
-audio.volume = (document.getElementById("volumeRange").value / 100);
+audio.volume = 0.5;
+
 
 function setVolume() {
     audio.volume = document.getElementById("volumeRange").value / 100;
@@ -51,6 +52,7 @@ function play() {
                 this.currentTime = 0;
                 this.play();
             }
+            console.log(audio.volume);
         };
     } else {
         stop();
@@ -74,6 +76,7 @@ function changeSound(){
     document.body.style.background = database[i].background;
     playButton.style.background = database[i].button;
     playButton.style.boxShadow = database[i].buttonShadow;
+    setVolume();
 }
 
 let arr = Object.keys(database);
